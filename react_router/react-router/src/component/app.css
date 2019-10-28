@@ -1,0 +1,43 @@
+a{
+  text-decoration-line: none;
+}
+.top{
+  margin: 0 auto;
+  padding: 30px;
+  width: 80%;
+  border-bottom: 1px solid grey;
+  font-size: 30px;
+}
+.navlink{
+  width: 100px;
+  height: 40px;
+  display: block;
+  border: 1px solid grey;
+  text-align: center;
+  line-height: 2.5;
+}
+.active{
+  background-color: grey;
+  color: red;
+}
+.main{
+  margin: 5% auto;
+  width: 80%;
+}
+.left{
+  float: left;
+  width: 30%;
+}
+.right{
+  float: left;
+  right: 70;
+  text-align: left;
+}
+.nav{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+.nav li{
+  display: inline;
+}

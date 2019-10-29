@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import * as actions from '../redux/actions'
 export default class Redux extends Component {
+  static propTypes = {
+    number: PropTypes.number.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+  }
   state = {
     add: 2
   }
@@ -11,28 +16,30 @@ export default class Redux extends Component {
   }
   handelAdd = () => {
     const { add } = this.state
-    this.props.store.dispatch(actions.increment(parseInt(add)))
+
+    this.props.increment(parseInt(add))
   }
   handelde = () => {
     const { add } = this.state
-    this.props.store.dispatch(actions.decrement(add))
+
+    this.props.decrement(add)
   }
   handelincrementifodd = () => {
     const { add } = this.state
-    const number = this.props.store.getState()
+    const { number, increment } = this.props
     if (number % 2 === 1)
-      this.props.store.dispatch(actions.increment(parseInt(add)))
+      increment(parseInt(add))
   }
   handelasync = () => {
     const { add } = this.state
     setTimeout(() => {
-      this.props.store.dispatch(actions.increment(parseInt(add)))
+      this.props.increment(parseInt(add))
     }, 1000)
 
   }
   render () {
     const { add } = this.state
-    const number = this.props.store.getState()
+    const { number } = this.props
     return (
       <div>
         <h2>click {number} number</h2>

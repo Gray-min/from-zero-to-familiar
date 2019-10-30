@@ -1,11 +1,18 @@
-import { INCREMENT, DECREMENT } from '../redux/actions-type'
-export function count (state = 0, action) {
+import { combineReducers } from 'redux'
+import { ADDCOMMENT, DELETECOMMENT, RECEIVECOMMENT } from './action-types'
+const initComments = []
+function comments (state = initComments, action) {
   switch (action.type) {
-    case INCREMENT:
-      return state + action.data
-    case DECREMENT:
-      return state - action.data
+    case ADDCOMMENT:
+      return [action.data, ...state]
+    case DELETECOMMENT:
+      return state.filter((comment, index) => index !== action.data)
+    case RECEIVECOMMENT:
+      return action.data
     default:
       return state
   }
 }
+export default combineReducers({
+  comments
+})
